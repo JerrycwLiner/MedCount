@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>藥品費用計算</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="calculator" aria-labelledby="page-title">
+    <h1 id="page-title">藥品費用計算</h1>
+
+    <form id="cost-form" novalidate>
+      <label for="cost">請輸入藥品費用</label>
+      <input
+        id="cost"
+        name="cost"
+        type="text"
+        inputmode="decimal"
+        autocomplete="off"
+        aria-describedby="message"
+      >
+      <button type="submit">計算</button>
+    </form>
+
+    <p id="message" class="message" aria-live="polite"></p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
