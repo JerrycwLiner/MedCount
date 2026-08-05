@@ -11,19 +11,21 @@
     <h1 id="page-title">藥品費用計算</h1>
 
     <form id="cost-form" novalidate>
-      <label for="cost">請輸入藥品費用</label>
-      <input
+      <label for="cost">請貼上複製的藥品單文字</label>
+      <textarea
         id="cost"
         name="cost"
-        type="text"
-        inputmode="decimal"
         autocomplete="off"
         aria-describedby="message"
-      >
-      <button type="submit">計算</button>
+        rows="4"
+      ></textarea>
+      <div class="button-group">
+        <button type="submit">計算</button>
+        <button id="clear-button" class="secondary-button" type="button">清除</button>
+      </div>
     </form>
 
-    <p id="message" class="message" aria-live="polite"></p>
+    <div id="message" class="message" aria-live="polite"></div>
   </main>
 
   <script src="script.js"></script>

@@ -39,24 +39,24 @@ label {
   font-weight: 700;
 }
 
-input {
+textarea {
   width: 100%;
-  height: 46px;
   padding: 10px 12px;
   border: 1px solid #a8c7bd;
   border-radius: 8px;
   font: inherit;
+  line-height: 1.6;
   outline: none;
+  resize: vertical;
 }
 
-input:focus {
+textarea:focus {
   border-color: #208768;
   box-shadow: 0 0 0 3px rgba(32, 135, 104, 0.16);
 }
 
 button {
   width: 100%;
-  margin-top: 18px;
   padding: 12px 20px;
   border: 0;
   border-radius: 8px;
@@ -66,6 +66,23 @@ button {
   font-weight: 700;
   cursor: pointer;
   transition: background 0.2s, transform 0.2s;
+}
+
+.button-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.secondary-button {
+  color: #176b55;
+  border: 1px solid #208768;
+  background: #ffffff;
+}
+
+.secondary-button:hover {
+  color: #ffffff;
+  background: #176b55;
 }
 
 button:hover {
@@ -80,10 +97,29 @@ button:active {
   min-height: 24px;
   margin: 20px 0 0;
   color: #176b55;
-  font-weight: 700;
-  text-align: center;
 }
 
 .message.error {
   color: #b42318;
+}
+
+.result-list {
+  margin: 10px 0 0;
+  padding-left: 24px;
+}
+
+.result-list li {
+  margin-top: 8px;
+}
+
+.result-name {
+  font-weight: 700;
+}
+
+.result-total {
+  margin: 18px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid #d5e5e0;
+  font-weight: 700;
+  text-align: right;
 }
