@@ -52,7 +52,7 @@ form.addEventListener("submit", (event) => {
   }
 
   const title = document.createElement("strong");
-  title.textContent = "擷取結果(再次確認劑量)";
+  title.textContent = "擷取結果(務必再次確認劑量)";
   const list = document.createElement("ol");
   list.className = "result-list";
 
@@ -69,12 +69,36 @@ form.addEventListener("submit", (event) => {
     const numericValue = Number(result.value.replace(/[$,，\s]/g, ""));
     return Number.isFinite(numericValue) ? sum + numericValue : sum;
   }, 0);
-  const totalLine = document.createElement("p");
-  totalLine.className = "result-total";
-  totalLine.textContent = `費用原總額：${total.toLocaleString("zh-TW", {
+  const adjustedTotal = Math.ceil((total * 1.08) / 10) * 10;
+  const totals = document.createElement("div");
+  totals.className = "result-totals";
+  const originalTotalLine = document.createElement("p");
+  originalTotalLine.textContent = `費用原總額：${total.toLocaleString("zh-TW", {
     maximumFractionDigits: 10
   })}`;
+  const adjustedTotalLine = document.createElement("p");
+  adjustedTotalLine.className = "adjusted-total";
+  const adjustedTotalLabel = document.createElement("span");
+  adjustedTotalLabel.className = "tooltip-trigger";
+  adjustedTotalLabel.tabIndex = 0;
+  adjustedTotalLabel.setAttribute("aria-describedby", "adjusted-total-tooltip");
+  adjustedTotalLabel.textContent = "規則後總額";
+  const tooltip = document.createElement("span");
+  tooltip.id = "adjusted-total-tooltip";
+  tooltip.className = "tooltip";
+  tooltip.setAttribute("role", "tooltip");
+  tooltip.textContent = `規則：
+1. 總額x1.08後無條件十進位
+2. 「沒有」超過口服藥內建費用者，至少需以「內建」費用key價、或視情況上調費用
+3. 「有」超過內建費用者，則至少需以「計算後」的價格key價、或視情況上調費用
+4. 若為「回診拿藥」或「拿以前的藥」的病患，舊制藥費若高於新制藥費，則以「價高者」計算`;
+  adjustedTotalLine.append(
+    adjustedTotalLabel,
+    document.createTextNode(`：${adjustedTotal.toLocaleString("zh-TW")}`),
+    tooltip
+  );
+  totals.append(originalTotalLine, adjustedTotalLine);
 
-  message.append(title, list, totalLine);
+  message.append(title, list, totals);
   message.classList.remove("error");
 });
