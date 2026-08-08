@@ -39,6 +39,11 @@ label {
   font-weight: 700;
 }
 
+.input-label {
+  position: relative;
+  width: fit-content;
+}
+
 textarea {
   width: 100%;
   padding: 10px 12px;
@@ -172,6 +177,12 @@ button:active {
   visibility: visible;
   opacity: 1;
   transform: translateY(0);
+}
+
+.input-tooltip {
+  right: auto;
+  left: 0;
+  width: max-content;
 }
 
 @media (max-width: 420px) {

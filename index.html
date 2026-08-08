@@ -11,7 +11,14 @@
     <h1 id="page-title">藥品費用計算</h1>
 
     <form id="cost-form" novalidate>
-      <label for="cost">請貼上複製的藥品單文字</label>
+      <label class="input-label" for="cost">
+        <span
+          class="tooltip-trigger"
+          tabindex="0"
+          aria-describedby="input-format-tooltip"
+        >請貼上複製的藥品單文字</span>
+        <span id="input-format-tooltip" class="tooltip input-tooltip" role="tooltip">只適用在批價中複製的藥單，不接受其他藥單格式</span>
+      </label>
       <textarea
         id="cost"
         name="cost"
