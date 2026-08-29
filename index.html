@@ -26,8 +26,18 @@
         aria-describedby="message"
         rows="4"
       ></textarea>
+      <div class="confirmation-group">
+        <label class="confirmation-option">
+          <input id="confirm-eligibility" type="checkbox">
+          <span>我已確認客人特約資格</span>
+        </label>
+        <label class="confirmation-option">
+          <input id="confirm-history" type="checkbox">
+          <span>我已比對客人先前病例費用</span>
+        </label>
+      </div>
       <div class="button-group">
-        <button type="submit">計算</button>
+        <button id="calculate-button" type="submit" disabled>計算</button>
         <button id="clear-button" class="secondary-button" type="button">清除</button>
       </div>
     </form>

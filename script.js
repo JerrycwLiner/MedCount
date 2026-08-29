@@ -2,9 +2,27 @@ const form = document.querySelector("#cost-form");
 const costInput = document.querySelector("#cost");
 const message = document.querySelector("#message");
 const clearButton = document.querySelector("#clear-button");
+const calculateButton = document.querySelector("#calculate-button");
+const confirmationCheckboxes = Array.from(
+  document.querySelectorAll(".confirmation-option input")
+);
+
+const updateCalculateButton = () => {
+  calculateButton.disabled = !confirmationCheckboxes.every(
+    (checkbox) => checkbox.checked
+  );
+};
+
+confirmationCheckboxes.forEach((checkbox) => {
+  checkbox.addEventListener("change", updateCalculateButton);
+});
 
 clearButton.addEventListener("click", () => {
   costInput.value = "";
+  confirmationCheckboxes.forEach((checkbox) => {
+    checkbox.checked = false;
+  });
+  updateCalculateButton();
   message.textContent = "";
   message.classList.remove("error");
   costInput.focus();
