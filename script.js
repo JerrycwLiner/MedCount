@@ -87,7 +87,7 @@ form.addEventListener("submit", (event) => {
     const numericValue = Number(result.value.replace(/[$,，\s]/g, ""));
     return Number.isFinite(numericValue) ? sum + numericValue : sum;
   }, 0);
-  const adjustedTotal = Math.ceil((total * 1.08) / 10) * 10;
+  const adjustedTotal = Math.ceil((total * 1.2) / 10) * 10;
   const totals = document.createElement("div");
   totals.className = "result-totals";
   const originalTotalLine = document.createElement("p");
@@ -106,7 +106,7 @@ form.addEventListener("submit", (event) => {
   tooltip.className = "tooltip";
   tooltip.setAttribute("role", "tooltip");
   tooltip.textContent = `規則：
-1. 總額x1.08後無條件十進位
+1. 總額x1.2後無條件十進位
 2. 「沒有」超過口服藥內建費用者，至少需以「內建」費用key價、或視情況上調費用
 3. 「有」超過內建費用者，則至少需以「計算後」的價格key價、或視情況上調費用
 4. 若為「回診拿藥」或「拿以前的藥」的病患，舊制藥費若高於新制藥費，則以「價高者」計算`;
